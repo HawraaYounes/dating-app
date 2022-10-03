@@ -26,11 +26,11 @@
   <span onclick="document.getElementById('login-modal').style.display='none'" class="close" title="Close Modal">&times;</span>
 
   <!-- Modal Content -->
-  <form class="modal-content animate" >
+  <div class="modal-content animate" >
 
     <div class="container">
-      <label for="email-login"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" id="email-login" required>
+      <label for="email-login"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" id="email-login" required>
 
       <label for="password-login"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" id="password-login" required>
@@ -41,7 +41,7 @@
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
-  </form>
+</div>
 </div>
     <!-- End Login Model -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

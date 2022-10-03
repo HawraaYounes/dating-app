@@ -1,4 +1,6 @@
-const baseUrl="http://127.0.0.1:8000/api";
+
+window.onload=function(){
+    const baseUrl="http://127.0.0.1:8000/api";
 //initialize variables
 const loginModal = document.getElementById('login-modal');
 const loginEmail= document.getElementById('email-login');
@@ -11,20 +13,21 @@ window.onclick = function(event) {
     }
   }
 //fetch login api
-const login= ()=>{
+const login= (e)=>{
+    e.preventDefault();
     const loginAPI=`${baseUrl}/login`;
         const data = new FormData();
         data.append("email", loginEmail.value);
         data.append("password", loginPassword.value);
-        console.log(data);
          axios.post(loginAPI,data).then(
             response =>  {
-               // localStorage.setItem("token", response.data.token)
-                console.log(response);
-                //refresh page
-                window.location.replace("users.html");
+               localStorage.setItem("token", response.data.authorisation.token)
+                window.location.replace("./users.html");
             }
         );
-
 }
 loginBtn.addEventListener("click",login);
+
+};
+
+
