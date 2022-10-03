@@ -13,10 +13,38 @@
             <img src="/frontend/images/dating.PNG" />
         </div>
         <div class="buttons">
-            <button id="login-btn" class="index-btn">Login</button>
+            <button id="login-btn" onclick="document.getElementById('login-modal').style.display='block'"  class="index-btn">Login</button>
             <p>Don't have an account? <span class="signup-text "id="signup-text">Sign Up</span></p>
         </div>
     </div>
+
+    <!-- Start Login Model -->
+    <!-- Button to open the modal login form -->
+
+<!-- The Modal -->
+<div id="login-modal" class="login-modal">
+  <span onclick="document.getElementById('login-modal').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" >
+
+    <div class="container">
+      <label for="email-login"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="email-login" required>
+
+      <label for="password-login"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password-login" required>
+
+      <button id="login">Login</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+    <!-- End Login Model -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
