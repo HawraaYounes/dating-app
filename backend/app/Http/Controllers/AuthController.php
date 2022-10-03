@@ -9,8 +9,6 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-
-
     public function login(Request $request)
     {
         $request->validate([
@@ -36,6 +34,7 @@ class AuthController extends Controller
                     'type' => 'bearer',
                 ]
             ]);
+
     }
 
     public function register(Request $request){

@@ -1,6 +1,5 @@
-
 window.onload=function(){
-    const baseUrl="http://127.0.0.1:8000/api";
+const baseUrl="http://127.0.0.1:8000/api";
 //initialize variables
 const loginModal = document.getElementById('login-modal');
 const loginEmail= document.getElementById('email-login');

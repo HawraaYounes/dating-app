@@ -8,6 +8,6 @@ use App\Http\Controllers\UserController;
 Route::post("/login", [AuthController::class, "login"])->name("login");
 
 Route::group(["middleware" => "auth:api"], function(){
-    Route::get("/getUsers", [UserController::class, "getUsers"])->name("getUsers");  
+    Route::post("/getUsers", [UserController::class, "getUsers"])->name("getUsers");  
 
 });

@@ -64,5 +64,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
+    public function blockedUsers()
+    {
+       return $this->belongsToMany(User::class, 'blocks', 'blocker_id', 'blocking_id');
+    }
+    
 }
