@@ -30,6 +30,14 @@
                     locationText.innerText=element.location;
                     userInfo.appendChild(nameText);
                     userInfo.appendChild(locationText);
+                    const blockBtn=document.createElement("button");
+                    blockBtn.classList.add("user-btn");
+                    userDiv.appendChild(blockBtn);
+                    blockBtn.innerText="Block";
+                    const favBtn=document.createElement("button");
+                    favBtn.classList.add("user-btn");
+                    userDiv.appendChild(favBtn);
+                    favBtn.innerText="Favourite";
                     const msg=document.createElement("p");
                     userDiv.appendChild(msg);
                     const icon=document.createElement("i");
