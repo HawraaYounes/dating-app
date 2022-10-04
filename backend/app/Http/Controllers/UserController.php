@@ -46,4 +46,21 @@ class UserController extends Controller
             "data" => $block
         ]);
     }
+
+    function unblockUser(Request $request){
+        $token=$request->token;
+        if(!$token){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        $block = Block::where('blocker_id','=',Auth::user()->id)
+                      ->where('blocking_id','=',$request->blocking_id)->delete();
+        // $block->delete();
+        return response()->json([
+            "status" => "Success",
+            "data" => $block
+        ]);
+    }
 }
