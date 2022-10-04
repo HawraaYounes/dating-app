@@ -3,6 +3,7 @@
     //initialize variables
     const token=localStorage.getItem("token");
     const usersContainer=document.querySelector(".users-container");
+   let blockBtn;
     //fetch login api
     const getUsers= ()=>{
         const getUsersAPI=`${baseUrl}/getUsers`;
@@ -30,7 +31,7 @@
                     locationText.innerText=element.location;
                     userInfo.appendChild(nameText);
                     userInfo.appendChild(locationText);
-                    const blockBtn=document.createElement("button");
+                    blockBtn=document.createElement("button");
                     blockBtn.classList.add("user-btn");
                     userDiv.appendChild(blockBtn);
                     blockBtn.innerText="Block";
@@ -45,11 +46,25 @@
                     icon.classList.add("fa-brands");
                     icon.classList.add("fa-facebook-messenger");
                     msg.appendChild(icon);
+                    blockBtn.addEventListener("click",function(){
+                        block(element.id);
+                    })
                     
                    });
                 }
             );
     }
+
+const block=(id)=>{
+    if(blockBtn.innerText=="Block"){
+        blockBtn.innerText="Unblock";
+        console.log(blockBtn.innerText)
+    }
+    else if(blockBtn.innerText=="Unblock"){
+        blockBtn.innerText="Block";
+        console.log(blockBtn.innerText)
+    }
+}
 window.addEventListener("load",getUsers);
     
     
