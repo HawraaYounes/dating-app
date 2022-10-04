@@ -9,19 +9,10 @@
 </head>
 <body>
     <div id="messenger" class="messenger">
-        <div class="msg my-message">
-            <img src="./images/default.jpg" alt="Avatar">
-            <p>Hello. How are you today?</p>
-            <span class="time-right">11:00</span>
-          </div>
-          <div class="msg user-message">
-            <img src="./images/default.jpg" alt="Avatar" class="right">
-            <p>Hey! I'm fine. Thanks for asking!</p>
-            <span class="time-left">11:01</span>
-          </div>
+        
           <div class="messenger-inputs container-flex">
-                <input type="text" class="msg-text"/>
-                <button class="msg-send-btn">Send</button>
+                <input type="text" class="msg-text" id="msg-input" placeholder="Type a message"/>
+                <button class="msg-send-btn" id="send-msg-btn">Send</button>
           </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

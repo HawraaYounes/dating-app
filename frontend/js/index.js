@@ -21,6 +21,7 @@ const login= (e)=>{
          axios.post(loginAPI,data).then(
             response =>  {
                localStorage.setItem("token", response.data.authorisation.token)
+               localStorage.setItem("authID", response.data.user.id)
                 window.location.replace("./users.html");
             }
         );

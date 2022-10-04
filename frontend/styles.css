@@ -106,6 +106,7 @@ body{
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    outline: none;
   }
   
   /* Set a style for all buttons */
