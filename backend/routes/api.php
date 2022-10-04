@@ -15,5 +15,6 @@ Route::group(["middleware" => "auth:api"], function(){
     Route::post("/favUser", [UserController::class, "favUser"])->name("favourite"); 
     Route::post("/unfavUser", [UserController::class, "unfavUser"])->name("un-favourite"); 
     Route::post("/sendMessage", [MessageController::class, "sendMessage"])->name("send-message"); 
+    Route::post("/getMessages", [MessageController::class, "getMessages"])->name("get-messages"); 
 
 });
