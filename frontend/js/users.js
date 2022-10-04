@@ -53,7 +53,10 @@
                     favBtn.addEventListener("click",function(){
                         favourite(element.id);
                     });
-                    
+                    icon.addEventListener("click",function(){
+                        localStorage.setItem("receiver_id",element.id);
+                        window.location.replace("messages.html");
+                    })
                    });
                 }
             );
