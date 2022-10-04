@@ -57,12 +57,35 @@
 
 const block=(id)=>{
     if(blockBtn.innerText=="Block"){
-        blockBtn.innerText="Unblock";
-        console.log(blockBtn.innerText)
+        const blockAPI=`${baseUrl}/blockUser`;
+        const data = new FormData();
+        data.append("token", token);
+        data.append("blocking_id", id);
+         axios.post(blockAPI,data).then(
+            response =>  {
+                console.log(response)
+                if(response.data.status=="Success"){
+                    blockBtn.innerText="Unblock";
+                    blockBtn.classList.remove("user-btn");
+                    blockBtn.classList.add("user-active-btn");
+                }
+            }
+        );
     }
     else if(blockBtn.innerText=="Unblock"){
-        blockBtn.innerText="Block";
-        console.log(blockBtn.innerText)
+        const unblockAPI=`${baseUrl}/unblockUser`;
+        const data = new FormData();
+        data.append("token", token);
+        data.append("blocking_id", id);
+         axios.post(unblockAPI,data).then(
+            response =>  {
+                if(response.data.status=="Success"){
+                    blockBtn.innerText="Block";
+                    blockBtn.classList.remove("user-active-btn");
+                    blockBtn.classList.add("user-btn");
+                }
+            }
+        );
     }
 }
 window.addEventListener("load",getUsers);

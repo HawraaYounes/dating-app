@@ -57,7 +57,6 @@ class UserController extends Controller
         }
         $block = Block::where('blocker_id','=',Auth::user()->id)
                       ->where('blocking_id','=',$request->blocking_id)->delete();
-        // $block->delete();
         return response()->json([
             "status" => "Success",
             "data" => $block
