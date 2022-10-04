@@ -184,6 +184,18 @@ body{
   padding: 10px;
   
 }
+.messenger-inputs{
+  bottom: 0;
+  position: fixed;
+  width: 90%;
+}
+.msg-send-btn{
+  width:30%;
+}
+.msg-text{
+  width: 69% !important;
+  float: right;
+}
 
 /* Darker chat container */
 .user-message {
