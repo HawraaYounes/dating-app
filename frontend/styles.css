@@ -167,6 +167,65 @@ body{
     color: rgb(233, 99, 142);
     border:rgb(233, 99, 142) solid 1px;
   }
+  .messenger{
+    width: 90%;
+    margin:1% auto;
+  } 
+  .msg{
+    width: 50%;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  /* Chat containers */
+.my-message {
+  margin-left: auto;
+  background-color: rgb(233, 99, 142,0.9);
+  color: white;
+  padding: 10px;
+  
+}
+
+/* Darker chat container */
+.user-message {
+  border-color: rgb(233, 99, 142);
+  background-color: whitesmoke;
+  color: rgb(233, 99, 142);
+}
+
+/* Clear floats */
+.msg::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.msg img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.msg img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: white;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {
     .cancelbtn {
