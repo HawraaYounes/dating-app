@@ -18,7 +18,9 @@ class UserController extends Controller
         }
         $user = Auth::user();
         $blockedIds = $user->blockedUsers->pluck('id')->toArray();
-        $users = User::whereNotIn('id',$blockedIds)->where('id',"!=",$user->id)->get();
+        $users = User::whereNotIn('id',$blockedIds)
+        ->where('id',"!=",$user->id)->
+        where('gender','=',$user->preffered_gender)->get();
         return response()->json([
             "status" => "Success",
             "data" => $users
