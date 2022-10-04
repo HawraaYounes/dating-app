@@ -11,5 +11,7 @@ Route::group(["middleware" => "auth:api"], function(){
     Route::post("/getUsers", [UserController::class, "getUsers"])->name("getUsers");  
     Route::post("/blockUser", [UserController::class, "blockUser"])->name("block"); 
     Route::post("/unblockUser", [UserController::class, "unblockUser"])->name("unblock"); 
+    Route::post("/favUser", [UserController::class, "favUser"])->name("favourite"); 
+    Route::post("/unfavUser", [UserController::class, "unfavUser"])->name("un-favourite"); 
 
 });

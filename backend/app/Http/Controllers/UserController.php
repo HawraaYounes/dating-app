@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Block;
+use App\Models\Favourite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,41 @@ class UserController extends Controller
         return response()->json([
             "status" => "Success",
             "data" => $block
+        ]);
+    }
+
+    function favUser(Request $request){
+        $token=$request->token;
+        if(!$token){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        $fav = Favourite::create([
+            'sender_id' => Auth::user()->id,
+            'receiver_id'=>$request->receiver_id
+        ]);
+        $fav->save();
+        return response()->json([
+            "status" => "Success",
+            "data" => $fav
+        ]);
+    }
+
+    function unfavUser(Request $request){
+        $token=$request->token;
+        if(!$token){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        $fav = Favourite::where('sender_id','=',Auth::user()->id)
+                      ->where('receiver_id','=',$request->receiver_id)->delete();
+        return response()->json([
+            "status" => "Success",
+            "data" => $fav
         ]);
     }
 }
