@@ -17,6 +17,7 @@ class MessageController extends Controller
                 'message' => 'Unauthorized',
             ], 401);
         }
+        //Add message sent by authenticated user to another user with given id
         $message = Message::create([
             'sender_id' => Auth::user()->id,
             'receiver_id'=>$request->receiver_id,
@@ -39,7 +40,7 @@ class MessageController extends Controller
         }
         $my_id = Auth::user()->id;
         $user_id = $request->user_id;
-        // Get all message from selected user
+        // Get all old messages between authenticated user and selected user
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('sender_id', $user_id)->where('receiver_id', $my_id);
         })->oRwhere(function ($query) use ($user_id, $my_id) {

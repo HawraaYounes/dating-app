@@ -13,7 +13,7 @@ const checkIfFav=async(id)=>{
         data.append("token", token);
         data.append("receiver_id", id);
         
-         const response=await axios.post(checkAPI,data)
+         const response=await axios.post(checkAPI,data);
             if(response.data.data.length>0){
                return true;
             }else{
@@ -28,8 +28,7 @@ const getUsers= (API)=>{
     data.append("token", token);
           axios.post(API,data).then(
             async response =>  {
-               response.data.data.map(async element => {
-               
+               response.data.data.map(async element => { 
                 const userDiv=document.createElement("div");
                 userDiv.classList.add("container-flex");
                 userDiv.classList.add("user");
