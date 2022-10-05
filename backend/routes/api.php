@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 
 Route::post("/login", [AuthController::class, "login"])->name("login");
+Route::post("/signup", [AuthController::class, "register"])->name("signup");
 
 Route::group(["middleware" => "auth:api"], function(){
     Route::post("/getUsers", [UserController::class, "getUsers"])->name("getUsers");  

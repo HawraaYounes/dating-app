@@ -45,6 +45,7 @@ class AuthController extends Controller
             'gender' => 'required',
             'preffered_gender' => 'required',
             'location' => 'required',
+            
         ]);
 
         $user = User::create([
