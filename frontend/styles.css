@@ -18,6 +18,32 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
 .index-div{
     margin:2% 5%;
 }
@@ -178,6 +204,7 @@ body{
     background-color: white;
     color: rgb(233, 99, 142);
     border:rgb(233, 99, 142) solid 1px;
+    padding: 15px 0px;
   }
   .messenger{
     width: 90%;
@@ -255,5 +282,26 @@ body{
   @media screen and (max-width: 300px) {
     .cancelbtn {
       width: 100%;
+    }
+    
+  }
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    .users-container {
+      margin-left: 0;
+    width: 100%;
+    padding: 10px 1px;
+  }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
     }
   }

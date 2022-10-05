@@ -98,7 +98,21 @@ class UserController extends Controller
             "data" => $fav
         ]);
     }
-
+    function checkIfFav(Request $request){
+        $token=$request->token;
+        if(!$token){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        $fav = Favourite::where('sender_id','=',Auth::user()->id)
+                      ->where('receiver_id','=',$request->receiver_id)->get();
+        return response()->json([
+            "status" => "Success",
+            "data" => $fav
+        ]);
+    }
     function getFavUsers(Request $request){
         $token=$request->token;
         if(!$token){

@@ -18,5 +18,6 @@ Route::group(["middleware" => "auth:api"], function(){
     Route::post("/sendMessage", [MessageController::class, "sendMessage"])->name("send-message"); 
     Route::post("/getMessages", [MessageController::class, "getMessages"])->name("get-messages"); 
     Route::post("/getFavUsers", [UserController::class, "getFavUsers"])->name("get-fav-users"); 
+    Route::post("/checkIfFav", [UserController::class, "checkIfFav"])->name("check-if-fav"); 
 
 });

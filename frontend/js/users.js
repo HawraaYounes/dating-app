@@ -5,14 +5,33 @@
     const usersContainer=document.querySelector(".users-container");
    let blockBtn;
     //fetch login api
-    const getUsers= ()=>{
-        const getUsersAPI=`${baseUrl}/getUsers`;
+
+    const checkIfFav=async(id)=>{
+        const checkAPI=`${baseUrl}/checkIfFav`;
+        const data = new FormData();
+            data.append("token", token);
+            data.append("receiver_id", id);
+            
+             const response=await axios.post(checkAPI,data)
+                if(response.data.data.length>0){
+                    console.log("fav")
+                   return true;
+                }else{
+                    console.log("not fav")
+                   return false;
+                   
+                }
+            
+    }
+
+    const getUsers= (getUsersAPI)=>{
+        
         const data = new FormData();
         data.append("token", token);
               axios.post(getUsersAPI,data).then(
-                response =>  {
-
-                   response.data.data.forEach(element => {
+                async response =>  {
+                   response.data.data.map(async element => {
+                   
                     const userDiv=document.createElement("div");
                     userDiv.classList.add("container-flex");
                     userDiv.classList.add("user");
@@ -38,7 +57,6 @@
                     const favBtn=document.createElement("button");
                     favBtn.classList.add("user-btn");
                     userDiv.appendChild(favBtn);
-                    favBtn.innerText="Favourite";
                     const msg=document.createElement("p");
                     userDiv.appendChild(msg);
                     const icon=document.createElement("i");
@@ -46,6 +64,19 @@
                     icon.classList.add("fa-brands");
                     icon.classList.add("fa-facebook-messenger");
                     msg.appendChild(icon);
+                   
+                    if(await checkIfFav(element.id)){
+                        
+                        favBtn.innerText="Un-Favourite";
+                        favBtn.classList.remove("user-btn");
+                        favBtn.classList.add("user-active-btn");
+                      }
+                      else{
+                        favBtn.innerText="Favourite";
+                        favBtn.classList.remove("user-active-btn");
+                        favBtn.classList.add("user-btn");
+                      }
+
                     blockBtn.addEventListener("click",function(){
                         block(element.id,this);
                     });
@@ -57,14 +88,14 @@
                         window.location.replace("messages.html");
                     })
                    });
+                   
                 }
             );
     }
 
+
 const favourite=(id,btn)=>{
-    alert(id)
     if(btn.innerText=="Favourite"){
-        alert("good")
         const favAPI=`${baseUrl}/favUser`;
         const data = new FormData();
         data.append("token", token);
@@ -131,7 +162,10 @@ const block=(id,btn)=>{
     }
 }
 
-window.addEventListener("load",getUsers);
+window.addEventListener("load",function(){
+    const getUsersAPI=`${baseUrl}/getUsers`;
+    getUsers(getUsersAPI);
+});
     
     
     
