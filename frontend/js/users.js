@@ -4,7 +4,6 @@
     const token=localStorage.getItem("token");
     const usersContainer=document.querySelector(".users-container");
    let blockBtn;
-   let favBtn;
     //fetch login api
     const getUsers= ()=>{
         const getUsersAPI=`${baseUrl}/getUsers`;
@@ -36,7 +35,7 @@
                     blockBtn.classList.add("user-btn");
                     userDiv.appendChild(blockBtn);
                     blockBtn.innerText="Block";
-                    favBtn=document.createElement("button");
+                    const favBtn=document.createElement("button");
                     favBtn.classList.add("user-btn");
                     userDiv.appendChild(favBtn);
                     favBtn.innerText="Favourite";
@@ -48,10 +47,10 @@
                     icon.classList.add("fa-facebook-messenger");
                     msg.appendChild(icon);
                     blockBtn.addEventListener("click",function(){
-                        block(element.id);
+                        block(element.id,this);
                     });
                     favBtn.addEventListener("click",function(){
-                        favourite(element.id);
+                        favourite(element.id,this);
                     });
                     icon.addEventListener("click",function(){
                         localStorage.setItem("receiver_id",element.id);
@@ -62,8 +61,10 @@
             );
     }
 
-const favourite=(id)=>{
-    if(favBtn.innerText=="Favourite"){
+const favourite=(id,btn)=>{
+    alert(id)
+    if(btn.innerText=="Favourite"){
+        alert("good")
         const favAPI=`${baseUrl}/favUser`;
         const data = new FormData();
         data.append("token", token);
@@ -72,14 +73,14 @@ const favourite=(id)=>{
             response =>  {
                 console.log(response)
                 if(response.data.status=="Success"){
-                    favBtn.innerText="Un-Favourite";
-                    favBtn.classList.remove("user-btn");
-                    favBtn.classList.add("user-active-btn");
+                    btn.innerText="Un-Favourite";
+                    btn.classList.remove("user-btn");
+                    btn.classList.add("user-active-btn");
                 }
             }
         );
     }
-    else if(favBtn.innerText=="Un-Favourite"){
+    else if(btn.innerText=="Un-Favourite"){
         const unfavAPI=`${baseUrl}/unfavUser`;
         const data = new FormData();
         data.append("token", token);
@@ -87,17 +88,17 @@ const favourite=(id)=>{
          axios.post(unfavAPI,data).then(
             response =>  {
                 if(response.data.status=="Success"){
-                    favBtn.innerText="Favourite";
-                    favBtn.classList.remove("user-active-btn");
-                    favBtn.classList.add("user-btn");
+                    btn.innerText="Favourite";
+                    btn.classList.remove("user-active-btn");
+                    btn.classList.add("user-btn");
                 }
             }
         );
     }
 }
 
-const block=(id)=>{
-    if(blockBtn.innerText=="Block"){
+const block=(id,btn)=>{
+    if(btn.innerText=="Block"){
         const blockAPI=`${baseUrl}/blockUser`;
         const data = new FormData();
         data.append("token", token);
@@ -106,14 +107,14 @@ const block=(id)=>{
             response =>  {
                 console.log(response)
                 if(response.data.status=="Success"){
-                    blockBtn.innerText="Unblock";
-                    blockBtn.classList.remove("user-btn");
-                    blockBtn.classList.add("user-active-btn");
+                    btn.innerText="Unblock";
+                    btn.classList.remove("user-btn");
+                    btn.classList.add("user-active-btn");
                 }
             }
         );
     }
-    else if(blockBtn.innerText=="Unblock"){
+    else if(btn.innerText=="Unblock"){
         const unblockAPI=`${baseUrl}/unblockUser`;
         const data = new FormData();
         data.append("token", token);
@@ -121,9 +122,9 @@ const block=(id)=>{
          axios.post(unblockAPI,data).then(
             response =>  {
                 if(response.data.status=="Success"){
-                    blockBtn.innerText="Block";
-                    blockBtn.classList.remove("user-active-btn");
-                    blockBtn.classList.add("user-btn");
+                    btn.innerText="Block";
+                    btn.classList.remove("user-active-btn");
+                    btn.classList.add("user-btn");
                 }
             }
         );
