@@ -26,6 +26,7 @@ body{
   position: fixed;
   height: 100%;
   overflow: auto;
+  position: fixed;
 }
 
 .sidebar a {

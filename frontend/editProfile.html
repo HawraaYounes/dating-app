@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Available users</title>
+</head>
+<body>
+    <div class="container-flex">
+        <div class="sidebar">
+                <a href="users.html">Users</a>
+                <a href="favourite.html">Favourite</a>
+                <a href="editProfile.html">Edit Profile</a>
+        </div>
+        <div class="users-container ">
+            <div class="user">
+                <!-- ///// -->
+
+                <div class="container">
+                    <h1>Edit Profile</h1> 
+                    <hr><br>
+                    <label for="name"><b>Full Name</b></label>
+                    <input type="text" placeholder="Enter Your Name" id="name" required>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" id="psw" required>
+                    <label for="location"><b>Location</b></label>
+                    <input type="text" placeholder="Enter Location" id="location" required>
+                    <label><b>Gender</b></label>
+                    <input type="radio" id="female" name="gender" value="female" >
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <label for="p-gender"><b>Preffered Gender</b></label>
+                    <input type="radio" id="p-female" name="p-gender" value="female">
+                    <label for="p-female">Female</label><br>
+                    <input type="radio" id="p-male" name="p-gender" value="male">
+                    <label for="p-male">Male</label><br>
+                    <div class="clearfix">
+                      <button type="submit" id="update">Update</button>
+                    </div>
+                  </div>
+                <!-- /// -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/editProfile.js"></script>
+</body>
+</html>

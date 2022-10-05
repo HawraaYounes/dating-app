@@ -19,8 +19,7 @@ const checkIfFav=async(id)=>{
             }else{
                return false;
                
-            }
-        
+            }   
 }
 //getUsers:this function get users from database based on given API
 const getUsers= (API)=>{

@@ -10,6 +10,7 @@ Route::post("/login", [AuthController::class, "login"])->name("login");
 Route::post("/signup", [AuthController::class, "register"])->name("signup");
 
 Route::group(["middleware" => "auth:api"], function(){
+    Route::post("/me", [AuthController::class, "me"])->name("me");  
     Route::post("/getUsers", [UserController::class, "getUsers"])->name("getUsers");  
     Route::post("/blockUser", [UserController::class, "blockUser"])->name("block"); 
     Route::post("/unblockUser", [UserController::class, "unblockUser"])->name("unblock"); 
