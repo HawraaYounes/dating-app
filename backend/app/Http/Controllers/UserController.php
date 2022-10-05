@@ -7,6 +7,7 @@ use App\Models\Favourite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -135,6 +136,32 @@ class UserController extends Controller
         return response()->json([
             "status" => "Success",
             "data" => $users
+        ]);
+    }
+    function updateProfile(Request $request){
+        $token=$request->token;
+        $name=$request->name;
+        $password=Hash::make($request->password);
+        $location=$request->location;
+        $gender=$request->gender;
+        $preffered_gender=$request->preffered_gender;
+        if(!$token){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        //Update authenticated user profile
+        $user = User::find(Auth::user()->id);
+        $user->name = $name;
+        $user->password = $password;
+        $user->location = $location;
+        $user->gender = $gender;
+        $user->preffered_gender= $preffered_gender;
+        $user->save();
+        return response()->json([
+            "status" => "Success",
+            "data" => $user
         ]);
     }
 }
