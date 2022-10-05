@@ -7,6 +7,7 @@
 /* img tag CSS */
 img{
     height:100%;
+  
 }
 /* body CSS */
 body{
@@ -278,6 +279,15 @@ body{
 .time-left {
   float: left;
   color: #999;
+}
+.hero{
+  margin-left: 201px;
+}
+.hero-img{
+  width:85%;
+}
+.hero-content{
+  text-align: left;
 }
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {

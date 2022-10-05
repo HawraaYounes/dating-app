@@ -32,7 +32,7 @@ const login= (e)=>{
             response =>  {
                localStorage.setItem("token", response.data.authorisation.token)
                localStorage.setItem("authID", response.data.user.id)
-                window.location.replace("./users.html");
+                window.location.replace("./hero.html");
             }
         );
 }
