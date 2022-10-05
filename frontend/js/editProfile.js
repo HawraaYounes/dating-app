@@ -77,6 +77,7 @@ const getCheckedRadios=()=>{
 }
 
 const updateProfile=()=>{
+    getCheckedRadios();
     //insert updated user information to database
     const updateProfileAPI=`${baseUrl}/updateProfile`;
     const data = new FormData();
