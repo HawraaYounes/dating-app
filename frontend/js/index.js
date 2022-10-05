@@ -50,7 +50,6 @@ for(i = 0; i < pGenderArray.length; i++) {
 }
 const signup= (e)=>{
   getCheckedRadios();
-  console.log(gender)
   e.preventDefault();
   const signupAPI=`${baseUrl}/signup`;
       const data = new FormData();
